@@ -21,6 +21,7 @@ class NotificationFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary', 'comment' => 'ID |  |  | '),
+		'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'notification key | キー | Hash値 | ', 'charset' => 'utf8'),
 		'title' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'item title | タイトル |  | ', 'charset' => 'utf8'),
 		'summary' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'item description | 概要 |  | ', 'charset' => 'utf8'),
 		'link' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'item url | リンク |  | ', 'charset' => 'utf8'),
@@ -43,6 +44,7 @@ class NotificationFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
+			'key' => 'Lorem ipsum dolor sit amet',
 			'title' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'link' => 'Lorem ipsum dolor sit amet',

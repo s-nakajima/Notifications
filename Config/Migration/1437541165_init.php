@@ -1,4 +1,19 @@
 <?php
+/**
+ * Init migration
+ *
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
+ * @link http://www.netcommons.org NetCommons Project
+ * @license http://www.netcommons.org/license.txt NetCommons License
+ * @copyright Copyright 2014, NetCommons Project
+ */
+
+/**
+ * Init migration
+ *
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
+ * @package NetCommons\Notifications\Config\Migration
+ */
 class Init extends CakeMigration {
 
 /**
@@ -18,6 +33,7 @@ class Init extends CakeMigration {
 			'create_table' => array(
 				'notifications' => array(
 					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary', 'comment' => 'ID |  |  | '),
+					'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'notification key | キー | Hash値 | ', 'charset' => 'utf8'),
 					'title' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'item title | タイトル |  | ', 'charset' => 'utf8'),
 					'summary' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'item description | 概要 |  | ', 'charset' => 'utf8'),
 					'link' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'item url | リンク |  | ', 'charset' => 'utf8'),

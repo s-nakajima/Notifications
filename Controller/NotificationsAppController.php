@@ -19,12 +19,4 @@ App::uses('AppController', 'Controller');
  */
 class NotificationsAppController extends AppController {
 
-/**
- * use component
- *
- * @var array
- */
-	public $components = array(
-		'Security'
-	);
 }
