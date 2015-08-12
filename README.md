@@ -8,4 +8,4 @@ Notifications for NetComomns3
 
 | dependencies  | status |
 | ------------- | ------ |
-| composer.json | [![Dependency Status](https://www.versioneye.com/user/projects/(versioneye_project_ID)/badge.png)](https://www.versioneye.com/user/projects/(versioneye_project_ID)) |
+| composer.json | [![Dependency Status](https://www.versioneye.com/user/projects/55cba47ac7d567000c000220/badge.png)](https://www.versioneye.com/user/projects/55cba47ac7d567000c000220) |
