@@ -98,9 +98,7 @@ class Notification extends NotificationsAppModel {
 		]);
 
 		//トランザクションBegin
-		$this->setDataSource('master');
-		$dataSource = $this->getDataSource();
-		$dataSource->begin();
+		$this->begin();
 
 		try {
 			//Notificationsのvalidate
@@ -110,7 +108,7 @@ class Notification extends NotificationsAppModel {
 
 			//既存データの削除
 			$conditions = array_keys(Hash::combine($data['Notification'], '{n}.key'));
-			if (! $this->deleteAll(array('key' => $conditions), true, false)) {
+			if (! $this->deleteAll(array($this->alias . '.key' => $conditions), true, false)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
@@ -119,13 +117,10 @@ class Notification extends NotificationsAppModel {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
-			$dataSource->commit();
-			//$dataSource->rollback();
+			$this->commit();
 
 		} catch (Exception $ex) {
-			$dataSource->rollback();
-			CakeLog::error($ex);
-			throw $ex;
+			$this->rollback($ex);
 		}
 
 		return true;
