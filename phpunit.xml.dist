@@ -4,12 +4,12 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".ctp">app/Plugin/Notifications</directory>
             <directory suffix=".php">app/Plugin/Notifications</directory>
-			<exclude>
-				<directory suffix=".php">app/Plugin/Notifications/Config/Migration</directory>
-				<directory suffix=".php">app/Plugin/Notifications/Config/Schema</directory>
-				<directory suffix=".php">app/Plugin/Notifications/Test/Case</directory>
-				<directory suffix=".php">app/Plugin/Notifications/Test/Fixture</directory>
-			</exclude>
+            <exclude>
+                <directory suffix=".php">app/Plugin/Notifications/Config/Migration</directory>
+                <directory suffix=".php">app/Plugin/Notifications/Config/Schema</directory>
+                <directory suffix=".php">app/Plugin/Notifications/Test/Case</directory>
+                <directory suffix=".php">app/Plugin/Notifications/Test/Fixture</directory>
+            </exclude>
         </whitelist>
     </filter>
     <logging>
