@@ -38,16 +38,50 @@ class Notification extends NotificationsAppModel {
  *
  * @var string
  */
+	const NOTIFICATION_PING_URL = 'www.netcommons.org';
+
+/**
+ * Notification url
+ *
+ * @var string
+ */
 	const NOTIFICATION_URL = 'http://www.netcommons.org/index.php?action=whatsnew_view_main_rss&block_id=12&_header=0';
 
 /**
- * Serialize to array data from xml
+ * PING
  *
+ * @param string|null $url pingのURL(テストで使用する)
+ * @return mixed fsockopenの結果
+ */
+	public function ping($url = null) {
+		//サイトの生死確認
+		$errno = 0;
+		$errstr = null;
+		if (! $url) {
+			$url = self::NOTIFICATION_PING_URL;
+		}
+		CakeLog::info('Execute ping ' . $url);
+		$result = fsockopen($url, 80, $errno, $errstr, 3);
+		if (! $result) {
+			CakeLog::info('Failure ping ' . $url);
+		} else {
+			CakeLog::info('Success ping ' . $url);
+		}
+		return $result;
+	}
+
+/**
+ * Serialize to array data from xml
+ * 後で修正する
+ *
+ * @param string|null $url XMLのURL(テストで使用する)
  * @return array Xml serialize array data
  */
-	public function serializeXmlToArray() {
-		//後で修正する
-		$xmlData = Xml::toArray(Xml::build(self::NOTIFICATION_URL));
+	public function serializeXmlToArray($url = null) {
+		if (! $url) {
+			$url = self::NOTIFICATION_URL;
+		}
+		$xmlData = Xml::toArray(Xml::build($url));
 
 		// rssの種類によってタグ名が異なる
 		if (isset($xmlData['feed'])) {
@@ -93,10 +127,6 @@ class Notification extends NotificationsAppModel {
  * @throws InternalErrorException
  */
 	public function updateNotifications($data) {
-		$this->loadModels([
-			'Notification' => 'Notifications.Notification'
-		]);
-
 		//トランザクションBegin
 		$this->begin();
 
