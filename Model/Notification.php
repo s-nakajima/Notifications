@@ -77,7 +77,7 @@ class Notification extends NotificationsAppModel {
  * @param string|null $url XMLのURL(テストで使用する)
  * @return array Xml serialize array data
  */
-	public function serializeXmlToArray($url = null) {
+	public function serialize($url = null) {
 		if (! $url) {
 			$url = self::NOTIFICATION_URL;
 		}
@@ -130,12 +130,12 @@ class Notification extends NotificationsAppModel {
 		//トランザクションBegin
 		$this->begin();
 
-		try {
-			//Notificationsのvalidate
-			if (! $this->validateNotifications($data['Notification'])) {
-				return false;
-			}
+		//Notificationsのvalidate
+		if (! $this->validateMany($data['Notification'])) {
+			return false;
+		}
 
+		try {
 			//既存データの削除
 			$conditions = array_keys(Hash::combine($data['Notification'], '{n}.key'));
 			if (! $this->deleteAll(array($this->alias . '.key' => $conditions), true, false)) {
@@ -153,20 +153,6 @@ class Notification extends NotificationsAppModel {
 			$this->rollback($ex);
 		}
 
-		return true;
-	}
-
-/**
- * Validate notifications
- *
- * @param array $data received post data
- * @return bool True on success, false on error
- */
-	public function validateNotifications($data) {
-		$this->validateMany($data);
-		if ($this->validationErrors) {
-			return false;
-		}
 		return true;
 	}
 
