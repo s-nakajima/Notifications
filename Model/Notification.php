@@ -60,13 +60,24 @@ class Notification extends NotificationsAppModel {
 		if (! $url) {
 			$url = self::NOTIFICATION_PING_URL;
 		}
+
 		CakeLog::info('Execute ping ' . $url);
-		$result = fsockopen($url, 80, $errno, $errstr, 3);
-		if (! $result) {
+		try {
+			$resource = fsockopen($url, 80, $errno, $errstr, 3);
+		} catch (Exception $ex) {
+			$resource = false;
+			CakeLog::error($ex);
+		}
+
+		if (! $resource) {
 			CakeLog::info('Failure ping ' . $url);
+			$result = false;
 		} else {
+			fclose($resource);
+			$result = true;
 			CakeLog::info('Success ping ' . $url);
 		}
+
 		return $result;
 	}
 
@@ -165,11 +176,12 @@ class Notification extends NotificationsAppModel {
 		$date = new DateTime();
 		$now = $date->format('Y-m-d H:i:s');
 
-		if (! $notification = $this->find('first', array(
+		$notification = $this->find('first', array(
 			'recursive' => -1,
 			'fields' => 'modified',
 			'order' => array('modified' => 'desc'),
-		))) {
+		));
+		if (! $notification) {
 			return false;
 		}
 
