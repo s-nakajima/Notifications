@@ -1,6 +1,6 @@
 <?php
 /**
- * 最新データ用のNotificationFixture
+ * 過去データ用のNotificationFixture
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -12,12 +12,11 @@
 App::uses('NotificationFixture', 'Notifications.Test/Fixture');
 
 /**
- * 最新データ用のNotificationFixture
+ * No data用のNotificationFixture
  *
  * @package NetCommons\Notifications\Test\Fixture
- * @codeCoverageIgnore
  */
-class Notification4latestFixture extends NotificationFixture {
+class Notification4nodataFixture extends NotificationFixture {
 
 /**
  * Model name
@@ -34,15 +33,10 @@ class Notification4latestFixture extends NotificationFixture {
 	public $table = 'notifications';
 
 /**
- * Initialize the fixture.
+ * Records
  *
- * @return void
+ * @var array
  */
-	public function init() {
-		foreach (array_keys($this->records) as $i) {
-			$this->records[$i]['modified'] = date('Y-m-d H:i:s');
-		}
-		parent::init();
-	}
+	public $records = array();
 
 }

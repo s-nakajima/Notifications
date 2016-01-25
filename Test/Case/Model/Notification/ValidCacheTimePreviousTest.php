@@ -27,7 +27,7 @@ class NotificationValidCacheTimePreviousTest extends NetCommonsModelTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'plugin.notifications.notification4previous',
+		'plugin.notifications.notification',
 	);
 
 /**

@@ -27,7 +27,7 @@ class NotificationNotificationValidCacheTimeTest extends NetCommonsModelTestCase
  * @var array
  */
 	public $fixtures = array(
-		'plugin.notifications.notification',
+		'plugin.notifications.notification4nodata',
 	);
 
 /**
