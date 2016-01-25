@@ -60,13 +60,24 @@ class Notification extends NotificationsAppModel {
 		if (! $url) {
 			$url = self::NOTIFICATION_PING_URL;
 		}
+
 		CakeLog::info('Execute ping ' . $url);
-		$result = fsockopen($url, 80, $errno, $errstr, 3);
-		if (! $result) {
+		try {
+			$resource = fsockopen($url, 80, $errno, $errstr, 3);
+		} catch (Exception $ex) {
+			$resource = false;
+			CakeLog::error($ex);
+		}
+
+		if (! $resource) {
 			CakeLog::info('Failure ping ' . $url);
+			$result = false;
 		} else {
+			fclose($resource);
+			$result = true;
 			CakeLog::info('Success ping ' . $url);
 		}
+
 		return $result;
 	}
 
@@ -77,7 +88,7 @@ class Notification extends NotificationsAppModel {
  * @param string|null $url XMLのURL(テストで使用する)
  * @return array Xml serialize array data
  */
-	public function serializeXmlToArray($url = null) {
+	public function serialize($url = null) {
 		if (! $url) {
 			$url = self::NOTIFICATION_URL;
 		}
@@ -130,12 +141,12 @@ class Notification extends NotificationsAppModel {
 		//トランザクションBegin
 		$this->begin();
 
-		try {
-			//Notificationsのvalidate
-			if (! $this->validateNotifications($data['Notification'])) {
-				return false;
-			}
+		//Notificationsのvalidate
+		if (! $this->validateMany($data['Notification'])) {
+			return false;
+		}
 
+		try {
 			//既存データの削除
 			$conditions = array_keys(Hash::combine($data['Notification'], '{n}.key'));
 			if (! $this->deleteAll(array($this->alias . '.key' => $conditions), true, false)) {
@@ -157,20 +168,6 @@ class Notification extends NotificationsAppModel {
 	}
 
 /**
- * Validate notifications
- *
- * @param array $data received post data
- * @return bool True on success, false on error
- */
-	public function validateNotifications($data) {
-		$this->validateMany($data);
-		if ($this->validationErrors) {
-			return false;
-		}
-		return true;
-	}
-
-/**
  * Valide cache time
  *
  * @return bool True on valid time, false on no valid
@@ -179,11 +176,12 @@ class Notification extends NotificationsAppModel {
 		$date = new DateTime();
 		$now = $date->format('Y-m-d H:i:s');
 
-		if (! $notification = $this->find('first', array(
+		$notification = $this->find('first', array(
 			'recursive' => -1,
 			'fields' => 'modified',
 			'order' => array('modified' => 'desc'),
-		))) {
+		));
+		if (! $notification) {
 			return false;
 		}
 

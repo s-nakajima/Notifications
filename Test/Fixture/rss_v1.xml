@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+	<item>
+	<title>title</title>
+	<link>link</link>
+	<pubDate>Sat, 13 Dec 2003 18:30:02 GMT</pubDate>
+	<description>description</description>
+	</item>
+</channel>
+<item>
+	<title>content title</title>
+	<link>http://example.com/1.html</link>
+	<dc:date>Fri, 13 Mar 2015 17:07:41</dc:date>
+	<description>content description</description>
+</item>
+</rdf:RDF>

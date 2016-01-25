@@ -11,6 +11,8 @@
 
 /**
  * NotificationFixture
+ *
+ * @package NetCommons\Notifications\Test\Fixture
  */
 class NotificationFixture extends CakeTestFixture {
 
@@ -31,9 +33,9 @@ class NotificationFixture extends CakeTestFixture {
 		'modified_user' => array('type' => 'integer', 'null' => true, 'default' => '0', 'unsigned' => false, 'comment' => 'modified user | 更新者 | users.id | '),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null, 'comment' => 'modified datetime | 更新日時 |  | '),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 		),
-		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB'),
 	);
 
 /**
@@ -41,19 +43,6 @@ class NotificationFixture extends CakeTestFixture {
  *
  * @var array
  */
-	public $records = array(
-		array(
-			'id' => 1,
-			'key' => 'Lorem ipsum dolor sit amet',
-			'title' => 'Lorem ipsum dolor sit amet',
-			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'link' => 'Lorem ipsum dolor sit amet',
-			'last_updated' => '2015-07-22 05:01:52',
-			'created_user' => 1,
-			'created' => '2015-07-22 05:01:52',
-			'modified_user' => 1,
-			'modified' => '2015-07-22 05:01:52'
-		),
-	);
+	public $records = array();
 
 }
