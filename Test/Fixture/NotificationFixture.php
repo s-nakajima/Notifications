@@ -49,7 +49,7 @@ class NotificationFixture extends CakeTestFixture {
 			'key' => 'Lorem ipsum dolor sit amet',
 			'title' => 'Lorem ipsum dolor sit amet',
 			'summary' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'link' => 'Lorem ipsum dolor sit amet',
+			'link' => '/notifications/notification/link/1',
 			'last_updated' => '2015-07-22 05:01:52',
 			'created_user' => 1,
 			'created' => '2015-07-22 05:01:52',
