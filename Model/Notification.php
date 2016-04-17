@@ -45,7 +45,8 @@ class Notification extends NotificationsAppModel {
  *
  * @var string
  */
-	const NOTIFICATION_URL = 'http://www.netcommons.org/index.php?action=whatsnew_view_main_rss&block_id=12&_header=0';
+	const NOTIFICATION_URL =
+			'http://www.netcommons.org/index.php?action=whatsnew_view_main_rss&block_id=12&_header=0';
 
 /**
  * PING
