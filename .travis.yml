@@ -4,11 +4,19 @@ php:
   - 5.4
   - 5.5
   - 5.6
+  - 7.0
 
 sudo: required
 
 env:
-  - NETCOMMONS_VERSION=master DB=mysql
+  matrix:
+    - NETCOMMONS_VERSION=master DB=mysql
+  global:
+    - secure: "cQjV3S4u9leQcCjyRNP3Nk1DRoqGPg4xTRY49EWzPAwjguxA0AgUNtkMRZfjx9bJk0nubaf88WNGx8edkIXy/sMDJA2D4Ok7oUUlPE6/LuQEdousYnJ+gJT77WOeZqTOGfzab6/Y5yH4V56ShalBvhVKSPt5Q/NXbPDCxPXrWinAfLMmYazp306ADuZIPiEuFBG43h3BRjfHO0ghQyhvkrb++nIPpTcSWt5jqTyFF8/pWQ97KT9xbeupKyVDSOMaeZVa49F0lk8e4rZm8Xn+cgnnG13LsFk5PV8HSnOQ2vYJkY5z9OnKlDmkmUf+NUFVD+9GxrzgICVMWRCm4Brh69VSjlnQOzp07jsqcJ/uRqAbdKtNhVXzphC027t7+rFodyjqkjlOtG+Z1BVRtYXCBwOH2MhZsoSjuicchsY3LmRRcYSlpUA2g8tOdgVH+gCnylcDOfrhf87I1BP8NpNNW04NPoeXHuZZNY+/5p/kKb5xImsJw1JdaD4myFzmQ9CvQAnbmeMnh2cbFu1WjC39Hq2sj6rrbbLOadrr8Og06gMChjjRuFkxkmokcaoaxZu3FLPG64tOfcpY7X7vTUYIJTK5AyMoVoXGgo0TuY00hKpBOJliLQEKD5zM6fcO2tIOgYTuaNSvn0AjutOCaW1lA5uLOf6+FR4Qk8nM1mEWVI8="
+    - GIT_COMMITTER_NAME=s-nakajima
+    - GIT_COMMITTER_EMAIL=nakajimashouhei@gmail.com
+    - GIT_AUTHOR_NAME=s-nakajima
+    - GIT_AUTHOR_EMAIL=nakajimashouhei@gmail.com
 
 before_script:
   - export NETCOMMONS_BUILD_DIR=`dirname $TRAVIS_BUILD_DIR`/NetCommons3
