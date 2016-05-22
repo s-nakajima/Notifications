@@ -1,6 +1,7 @@
 {
     "name": "netcommons/notifications",
     "description": "Notifications for NetCommons Plugin",
+    "type": "cakephp-plugin",
     "homepage": "http://www.netcommons.org/",
     "extra": {
         "installer-paths": {
@@ -8,16 +9,8 @@
         }
     },
     "require": {
-        "cakephp/cakephp":              "~2.6",
-        "cakephp/debug_kit":            "~2.2",
         "cakedc/migrations":            "~2.2",
-        "phpunit/phpunit":              "~3.7.38",
-        "sebastian/phpcpd":             "~2.0"
-    },
-    "require-dev": {
-        "mustangostang/spyc":           "dev-master",
-        "netcommons/net-commons":       "dev-master",
-        "satooshi/php-coveralls":       "dev-master"
+        "netcommons/net-commons":       "dev-master"
     },
     "license": "NetCommons License",
     "authors": [
@@ -26,8 +19,7 @@
             "homepage": "https://github.com/NetCommons3/Notifications/graphs/contributors"
         }
     ],
-    "type":        "cakephp-plugin",
-    "keywords":    ["cakephp", "notifications"],
+    "keywords": ["cakephp", "notifications"],
     "config": {
         "vendor-dir": "vendors"
     }
