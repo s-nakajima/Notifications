@@ -16,7 +16,7 @@
     "authors": [
         {
             "name": "NetCommons Community",
-            "homepage": "https://github.com/NetCommons3/Notifications/graphs/contributors"
+            "homepage": "http://www.netcommons.org"
         }
     ],
     "keywords": ["cakephp", "notifications"],
