@@ -10,7 +10,7 @@
     },
     "require": {
         "cakedc/migrations":            "~2.2",
-        "netcommons/net-commons":       "dev-master"
+        "netcommons/net-commons":       "@dev"
     },
     "license": "NetCommons License",
     "authors": [
