@@ -149,7 +149,7 @@ class Notification extends NotificationsAppModel {
 
 		try {
 			//既存データの削除
-			$conditions = array_keys(Hash::combine($data['Notification'], '{n}.key'));
+			$conditions = Hash::extract($data, 'Notification.{n}.Notification.key');
 			if (! $this->deleteAll(array($this->alias . '.key' => $conditions), true, false)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
