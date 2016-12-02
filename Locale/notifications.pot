@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ControlPanel/View/ControlPanel/index.ctp:16
+#: ControlPanel/Controller/ControlPanelController.php:80
 msgid "Notifications"
 msgstr ""
 
