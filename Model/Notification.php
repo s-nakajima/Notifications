@@ -45,8 +45,7 @@ class Notification extends NotificationsAppModel {
  *
  * @var string
  */
-	const NOTIFICATION_URL =
-			'http://www.netcommons.org/index.php?action=whatsnew_view_main_rss&block_id=12&_header=0';
+	const NOTIFICATION_URL = 'http://www.netcommons.org/topics/topics/index.xml?frame_id=12';
 
 /**
  * PING
@@ -118,6 +117,9 @@ class Notification extends NotificationsAppModel {
 
 		$data = array();
 		foreach ($items as $item) {
+			if (! $item['title']) {
+				continue;
+			}
 			$date = new DateTime($item[$dateKey]);
 			$summary = Hash::get($item, $summaryKey);
 			$data[] = array(
@@ -139,11 +141,15 @@ class Notification extends NotificationsAppModel {
  * @throws InternalErrorException
  */
 	public function updateNotifications($data) {
+		if (! $data['Notification']) {
+			return true;
+		}
 		//トランザクションBegin
 		$this->begin();
 
 		//Notificationsのvalidate
 		if (! $this->validateMany($data['Notification'])) {
+			$this->rollback();
 			return false;
 		}
 
