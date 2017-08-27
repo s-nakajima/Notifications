@@ -45,7 +45,7 @@ class Notification extends NotificationsAppModel {
  *
  * @var string
  */
-	const NOTIFICATION_URL = 'http://www.netcommons.org/topics/topics/index.xml?frame_id=12';
+	const NOTIFICATION_URL = 'https://www.netcommons.org/topics/topics/index.xml?frame_id=12';
 
 /**
  * PING
@@ -83,10 +83,10 @@ class Notification extends NotificationsAppModel {
 
 /**
  * Serialize to array data from xml
- * 後で修正する
  *
  * @param string|null $url XMLのURL(テストで使用する)
  * @return array Xml serialize array data
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  */
 	public function serialize($url = null) {
 		if (! $url) {
@@ -105,11 +105,13 @@ class Notification extends NotificationsAppModel {
 			$dateKey = 'pubDate';
 			$linkKey = 'link';
 			$summaryKey = 'description';
-		} else {
+		} elseif (isset($xmlData['RDF'])) {
 			$items = Hash::get($xmlData, 'RDF.item');
 			$dateKey = 'dc:date';
 			$linkKey = 'link';
 			$summaryKey = 'description';
+		} else {
+			return false;
 		}
 		if (! isset($items[0]) && is_array($items)) {
 			$items = array($items);

@@ -64,7 +64,7 @@ class NotificationSerializeTest extends NetCommonsModelTestCase {
 		$result = $this->$model->$method();
 
 		//チェック
-		$this->assertTrue(count($result) > 0);
+		$this->assertTrue(is_array($result));
 	}
 
 /**
