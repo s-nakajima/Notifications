@@ -83,10 +83,10 @@ class Notification extends NotificationsAppModel {
 
 /**
  * Serialize to array data from xml
- * 後で修正する
  *
  * @param string|null $url XMLのURL(テストで使用する)
  * @return array Xml serialize array data
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  */
 	public function serialize($url = null) {
 		if (! $url) {
