@@ -1,27 +1,31 @@
 {
-    "name": "netcommons/notifications",
-    "description": "Notifications for NetCommons Plugin",
-    "type": "cakephp-plugin",
-    "homepage": "http://www.netcommons.org/",
-    "extra": {
-        "installer-paths": {
-            "app/Plugin/{$name}": ["type:cakephp-plugin"]
-        }
-    },
-    "require": {
-        "cakedc/migrations":            "~2.2",
-        "netcommons/net-commons":       "@dev"
-    },
-    "license": "NetCommons License",
-    "authors": [
-        {
-            "name": "NetCommons Community",
-            "homepage": "http://www.netcommons.org"
-        }
-    ],
-    "keywords": ["cakephp", "notifications"],
-    "config": {
-        "vendor-dir": "vendors"
-    }
+	"name" : "netcommons/notifications",
+	"description" : "Notifications for NetCommons Plugin",
+	"type" : "cakephp-plugin",
+	"homepage" : "http://www.netcommons.org/",
+	"extra" : {
+		"installer-paths" : {
+			"app/Plugin/{$name}" : [
+				"type:cakephp-plugin"
+			]
+		}
+	},
+	"require" : {
+		"cakedc/migrations" : "~2.2",
+		"netcommons/net-commons" : "@dev"
+	},
+    "license": "LicenseRef-NetCommons",
+    "license-ref-net-commons": "https://raw.githubusercontent.com/NetCommons3/NetCommons3/master/license.txt",
+	"authors" : [{
+			"name" : "NetCommons Community",
+			"homepage" : "http://www.netcommons.org"
+		}
+	],
+	"keywords" : [
+		"cakephp",
+		"notifications"
+	],
+	"config" : {
+		"vendor-dir" : "vendors"
+	}
 }
-
