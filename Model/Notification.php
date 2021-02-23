@@ -12,7 +12,7 @@
 App::uses('NotificationsAppModel', 'Notifications.Model');
 
 /**
- * Notification Model
+ * Notification Model2
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Notifications\Model
